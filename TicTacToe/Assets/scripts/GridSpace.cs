@@ -41,17 +41,17 @@ public class GridSpace : MonoBehaviour
         {
             return;
         }
-        isSet = true;
         m_text.text = m_player;
-        m_button.interactable = false;
+        SetDisabled();
         m_gameController.checkEndGame();
     }
 
     public void SetDisabled()
     {
+        isSet = true;
         m_button.interactable = false;
     }
-	
+
     void Start()
     {
         m_text.text = "";
