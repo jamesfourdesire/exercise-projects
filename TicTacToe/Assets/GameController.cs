@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     };
 
     public GridSpace[] spaces;
+    public GameObject message;
     string player;
 
     public void checkEndGame()
@@ -27,7 +28,8 @@ public class GameController : MonoBehaviour
         int winner = checkWin();
         if (winner > 0)
         {
-            Debug.Log((winner == 1 ? "O" : "X") + " wins!");
+            message.SetActive(true);
+            message.GetComponentInChildren<Text>().text = (winner == 1 ? "O" : "X") + " wins!";
             foreach (GridSpace space in spaces)
             {
                 space.SetDisabled();
@@ -38,6 +40,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         player = "O";
+        message.SetActive(false);
         foreach (GridSpace space in spaces)
         {
             space.SetGameController(this);
