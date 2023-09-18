@@ -63,18 +63,18 @@ public class GameController : MonoBehaviour
 
 	private int checkWin()
 	{
-		int[] nums = new int[9];
+		int[] numbers = new int[9];
 		for (int i = 0; i < spaces.Length; i++)
 		{
-			nums[i] = spaces[i].GetPlayerNum();
+			numbers[i] = spaces[i].GetPlayerNum();
 		}
 		for (int i = 0; i < idxCheck.Length / 3; i++)
 		{
-			if (nums[idxCheck[i, 0]] == nums[idxCheck[i, 1]]
-			&& nums[idxCheck[i, 1]] == nums[idxCheck[i, 2]]
-			&& nums[idxCheck[i, 0]] > 0)
+			if (numbers[idxCheck[i, 0]] == numbers[idxCheck[i, 1]]
+			&& numbers[idxCheck[i, 1]] == numbers[idxCheck[i, 2]]
+			&& numbers[idxCheck[i, 0]] > 0)
 			{
-				return nums[idxCheck[i, 0]];
+				return numbers[idxCheck[i, 0]];
 			}
 		}
 		return 0;
