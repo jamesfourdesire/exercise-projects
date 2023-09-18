@@ -30,10 +30,7 @@ public class GameController : MonoBehaviour
 		{
 			message.SetActive(true);
 			message.GetComponentInChildren<Text>().text = (winner == 1 ? "O" : "X") + " wins!";
-			foreach (GridSpace space in spaces)
-			{
-				space.SetDisabled();
-			}
+			foreach (GridSpace space in spaces) space.SetDisabled();
 		}
 	}
 
@@ -55,10 +52,7 @@ public class GameController : MonoBehaviour
 
 	private void assignPlayers()
 	{
-		foreach (GridSpace space in spaces)
-		{
-			space.SetPlayer(m_Player);
-		}
+		foreach (GridSpace space in spaces) space.SetPlayer(m_Player);
 	}
 
 	private int checkWin()
@@ -77,7 +71,7 @@ public class GameController : MonoBehaviour
 				return numbers[idxCheck[i, 0]];
 			}
 		}
+
 		return 0;
 	}
-
 }
