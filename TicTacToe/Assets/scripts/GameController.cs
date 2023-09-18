@@ -19,11 +19,11 @@ public class GameController : MonoBehaviour
 
 	public GridSpace[] spaces;
 	public GameObject message;
-	string player;
+	string m_Player;
 
 	public void checkEndGame()
 	{
-		player = player == "O" ? "X" : "O";
+		m_Player = m_Player == "O" ? "X" : "O";
 		assignPlayers();
 		int winner = checkWin();
 		if (winner > 0)
@@ -39,12 +39,12 @@ public class GameController : MonoBehaviour
 
 	void Start()
 	{
-		player = "O";
+		m_Player = "O";
 		message.SetActive(false);
 		foreach (GridSpace space in spaces)
 		{
 			space.SetGameController(this);
-			space.SetPlayer(player);
+			space.SetPlayer(m_Player);
 		}
 	}
 
@@ -57,24 +57,24 @@ public class GameController : MonoBehaviour
 	{
 		foreach (GridSpace space in spaces)
 		{
-			space.SetPlayer(player);
+			space.SetPlayer(m_Player);
 		}
 	}
 
 	private int checkWin()
 	{
-		int[] nums = new int[9];
+		int[] numbers = new int[9];
 		for (int i = 0; i < spaces.Length; i++)
 		{
-			nums[i] = spaces[i].GetPlayerNum();
+			numbers[i] = spaces[i].GetPlayerNum();
 		}
 		for (int i = 0; i < idxCheck.Length / 3; i++)
 		{
-			if (nums[idxCheck[i, 0]] == nums[idxCheck[i, 1]]
-			&& nums[idxCheck[i, 1]] == nums[idxCheck[i, 2]]
-			&& nums[idxCheck[i, 0]] > 0)
+			if (numbers[idxCheck[i, 0]] == numbers[idxCheck[i, 1]]
+			&& numbers[idxCheck[i, 1]] == numbers[idxCheck[i, 2]]
+			&& numbers[idxCheck[i, 0]] > 0)
 			{
-				return nums[idxCheck[i, 0]];
+				return numbers[idxCheck[i, 0]];
 			}
 		}
 		return 0;
