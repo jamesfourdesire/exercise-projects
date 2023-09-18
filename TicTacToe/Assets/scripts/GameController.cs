@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
+	const string PLAYER_O = "O";
+	const string PLAYER_X = "X";
+
 	private static int[,] idxCheck = new int[8, 3] {
 		{0, 1, 2},
 		{3, 4, 5},
@@ -23,20 +26,20 @@ public class GameController : MonoBehaviour
 
 	public void checkEndGame()
 	{
-		m_Player = m_Player == "O" ? "X" : "O";
+		m_Player = m_Player == PLAYER_O ? PLAYER_X : PLAYER_O;
 		assignPlayers();
 		int winner = checkWin();
 		if (winner > 0)
 		{
 			message.SetActive(true);
-			message.GetComponentInChildren<Text>().text = (winner == 1 ? "O" : "X") + " wins!";
+			message.GetComponentInChildren<Text>().text = (winner == 1 ? PLAYER_O : PLAYER_X) + " wins!";
 			foreach (GridSpace space in spaces) space.SetDisabled();
 		}
 	}
 
 	void Start()
 	{
-		m_Player = "O";
+		m_Player = PLAYER_O;
 		message.SetActive(false);
 		foreach (GridSpace space in spaces)
 		{
