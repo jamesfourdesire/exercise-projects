@@ -19,28 +19,19 @@ public class GridSpace : MonoBehaviour
 
 	public int GetPlayerNum()
 	{
-		if (isSet)
-		{
-			return m_player == "O" ? 1 : 2;
-		}
+		if (isSet) m_player == "O" ? 1 : 2;
 		return 0;
 	}
 
 	public void SetPlayer(string player)
 	{
-		if (isSet)
-		{
-			return;
-		}
+		if (isSet) return;
 		m_player = player;
 	}
 
 	public void SetSpace()
 	{
-		if (isSet)
-		{
-			return;
-		}
+		if (isSet) return;
 		m_text.text = m_player;
 		SetDisabled();
 		m_gameController.checkEndGame();
@@ -56,5 +47,4 @@ public class GridSpace : MonoBehaviour
 	{
 		m_text.text = "";
 	}
-
 }
